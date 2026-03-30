@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,6 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
   const headerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
@@ -127,27 +130,45 @@ export default function Contact() {
           <form
             ref={formRef}
             style={{ opacity: 0 }}
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setSending(true);
+              setError("");
+              const form = e.currentTarget;
+              const data = {
+                name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+                email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                projectType: (form.elements.namedItem("projectType") as HTMLSelectElement).value,
+                message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+              };
+              try {
+                const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+                if (res.ok) { setSent(true); form.reset(); } else { setError("Something went wrong. Please try again."); }
+              } catch { setError("Network error. Please try again."); }
+              setSending(false);
+            }}
           >
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "1.5rem" }}>
               <div>
                 <label style={labelStyle}>Full Name</label>
-                <input type="text" placeholder="Your name" style={inputStyle} />
+                <input type="text" name="name" placeholder="Your name" required style={inputStyle} />
               </div>
               <div>
                 <label style={labelStyle}>Phone</label>
-                <input type="tel" placeholder="+91 XXXXX XXXXX" style={inputStyle} />
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required style={inputStyle} />
               </div>
             </div>
 
             <div style={{ marginBottom: "1.5rem" }}>
               <label style={labelStyle}>Email</label>
-              <input type="email" placeholder="your@email.com" style={inputStyle} />
+              <input type="email" name="email" placeholder="your@email.com" style={inputStyle} />
             </div>
 
             <div style={{ marginBottom: "1.5rem" }}>
               <label style={labelStyle}>Project Type</label>
               <select
+                name="projectType"
                 style={{ ...inputStyle, appearance: "none" as const }}
                 defaultValue=""
               >
@@ -163,14 +184,27 @@ export default function Contact() {
             <div style={{ marginBottom: "1.5rem" }}>
               <label style={labelStyle}>Tell Us About Your Project</label>
               <textarea
+                name="message"
                 rows={4}
                 placeholder="Describe your dream project..."
                 style={{ ...inputStyle, resize: "none" }}
               />
             </div>
 
+            {sent && (
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#25D366", fontSize: "0.875rem", marginTop: "0.5rem" }}>
+                Message sent successfully! We&apos;ll get back to you soon.
+              </p>
+            )}
+            {error && (
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#e74c3c", fontSize: "0.875rem", marginTop: "0.5rem" }}>
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
+              disabled={sending}
               className="group hover-target"
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
@@ -178,22 +212,30 @@ export default function Contact() {
                 alignItems: "center",
                 gap: "0.75rem",
                 padding: "1rem 2.5rem",
-                background: "#1A1A1A",
+                background: sent ? "#25D366" : "#1A1A1A",
                 color: "#FAF8F5",
                 borderRadius: "9999px",
                 fontSize: "0.875rem",
                 border: "none",
-                cursor: "pointer",
+                cursor: sending ? "wait" : "pointer",
                 transition: "background 0.5s",
                 marginTop: "1rem",
+                opacity: sending ? 0.7 : 1,
               }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "#C8956C"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "#1A1A1A"}
+              onMouseEnter={e => { if (!sent) (e.currentTarget as HTMLElement).style.background = "#C8956C"; }}
+              onMouseLeave={e => { if (!sent) (e.currentTarget as HTMLElement).style.background = "#1A1A1A"; }}
             >
-              Send Message
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              {sending ? "Sending..." : sent ? "Sent!" : "Send Message"}
+              {!sending && !sent && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              )}
+              {sent && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              )}
             </button>
           </form>
 
