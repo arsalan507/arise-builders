@@ -397,7 +397,7 @@ export default function About() {
             <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "#1A1A1A" }}>
               <Image
                 src="/founder.jpg"
-                alt="Founder & CEO"
+                alt="Azhan Ahmed — Founder & CEO"
                 fill
                 style={{ objectFit: "cover", objectPosition: "top center" }}
               />
@@ -422,7 +422,7 @@ export default function About() {
             {/* Text */}
             <div style={{ padding: "1.5rem" }}>
               <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
-                [Founder Name]
+                Azhan Ahmed
               </h4>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
                 With an unwavering belief that every family deserves a home built with purpose, he founded Arise Builders to bring precision engineering and genuine care together under one roof. His vision is simple — build fewer homes, but build them right.
@@ -499,7 +499,7 @@ export default function About() {
             {/* Text */}
             <div style={{ padding: "1.5rem" }}>
               <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
-                [Father's Name]
+                Amjad Ahmed
               </h4>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
                 The bedrock of Arise Builders. Decades of experience in construction and deep roots in Bengaluru's real estate landscape make him the guiding force behind every major decision the company takes.
@@ -550,7 +550,7 @@ export default function About() {
                 }}
               >
                 <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.5rem", color: "#C8956C" }}>
-                  A
+                  M
                 </span>
               </div>
               <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: "#6B6355", textTransform: "uppercase" }}>
@@ -576,7 +576,7 @@ export default function About() {
             {/* Text */}
             <div style={{ padding: "1.5rem" }}>
               <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
-                [Director's Name]
+                Mohammed Yaseen
               </h4>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
                 The man who turns blueprints into reality. With sharp attention to site execution, material quality, and on-ground timelines, he ensures every project at Arise is delivered exactly as promised — no compromises.
