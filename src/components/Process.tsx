@@ -48,7 +48,6 @@ export default function Process() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -58,26 +57,12 @@ export default function Process() {
         scrollTrigger: { trigger: headerRef.current, start: "top 85%" },
       });
 
-      // Animated timeline line
-      gsap.set(lineRef.current, { scaleY: 0 });
-      gsap.to(lineRef.current, {
-        scaleY: 1,
-        ease: "none",
-        transformOrigin: "top",
-        scrollTrigger: {
-          trigger: stepsRef.current,
-          start: "top 70%",
-          end: "bottom 70%",
-          scrub: 1,
-        },
-      });
-
       const stepItems = stepsRef.current?.querySelectorAll(".step-item");
-      stepItems?.forEach((step, i) => {
-        gsap.set(step, { x: 60, opacity: 0 });
+      stepItems?.forEach((step) => {
+        gsap.set(step, { y: 40, opacity: 0 });
         gsap.to(step, {
-          x: 0, opacity: 1, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: step, start: "top 85%" },
+          y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: step, start: "top 88%" },
         });
       });
     });
@@ -93,120 +78,116 @@ export default function Process() {
       style={{ background: "#1A1A1A", color: "#FAF8F5", paddingTop: "clamp(5rem, 8vw, 10rem)", paddingBottom: "clamp(5rem, 8vw, 10rem)" }}
     >
       <span
-        className="absolute -right-8 top-20 text-[200px] font-bold select-none hidden lg:block"
-        style={{ fontFamily: "'DM Serif Display', serif", color: "#2D2820" }}
+        className="absolute -right-8 top-20 font-bold select-none hidden lg:block"
+        style={{ fontFamily: "'DM Serif Display', serif", fontSize: "200px", color: "#2D2820", userSelect: "none" }}
       >
         04
       </span>
 
       <div style={{ maxWidth: "1400px", margin: "0 auto", paddingLeft: "clamp(2.5rem, 5vw, 7rem)", paddingRight: "clamp(2.5rem, 5vw, 7rem)" }}>
         {/* Header */}
-        <div ref={headerRef} className="mb-20">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-[1px]" style={{ background: "#C8956C" }} />
-            <span className="text-xs tracking-[0.3em] uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#C8956C" }}>
+        <div ref={headerRef} style={{ marginBottom: "5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+            <div style={{ width: "3rem", height: "1px", background: "#C8956C" }} />
+            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C8956C" }}>
               How We Work
             </span>
           </div>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: "1.5rem" }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}>
               Our <span style={{ color: "#C8956C" }}>Process</span>
             </h2>
-            <p className="max-w-md text-sm leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#8F8776" }}>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", maxWidth: "28rem", fontSize: "0.875rem", lineHeight: "1.7", color: "#8F8776" }}>
               A transparent, collaborative approach that keeps you involved and informed — from the first sketch to the final key handover.
             </p>
           </div>
         </div>
 
-        {/* Steps — clean left-aligned with right content */}
-        <div ref={stepsRef} className="grid md:grid-cols-[1fr_2px_1.8fr] gap-0 md:gap-8">
-          {/* Left: duration labels */}
-          <div className="hidden md:flex flex-col">
-            {steps.map((step, i) => (
+        {/* Steps — each step is one row: duration | dot+line | content */}
+        <div ref={stepsRef}>
+          {steps.map((step, i) => (
+            <div
+              key={step.num}
+              className="step-item"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "140px 24px 1fr",
+                gap: "0 2rem",
+                paddingBottom: i < steps.length - 1 ? "3rem" : "0",
+              }}
+            >
+              {/* Left: duration label — aligned to top of this row */}
               <div
-                key={step.num}
-                className="flex items-start justify-end pr-8"
-                style={{ paddingTop: i === 0 ? "4px" : "0", marginBottom: i < steps.length - 1 ? "3rem" : "0" }}
-              >
-                <div className="text-right">
-                  <span
-                    className="text-xs tracking-[0.2em] uppercase"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#C8956C" }}
-                  >
-                    {step.duration}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Center: vertical line with dots */}
-          <div className="relative hidden md:block">
-            <div className="absolute inset-0 w-[1px] mx-auto" style={{ background: "#2D2820" }}>
-              <div
-                ref={lineRef}
-                className="w-full h-full"
-                style={{ background: "#C8956C" }}
-              />
-            </div>
-            {steps.map((_, i) => (
-              <div
-                key={i}
-                className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10"
                 style={{
-                  top: i === 0 ? "4px" : `calc(${i} / ${steps.length - 1} * 100%)`,
-                  borderColor: "#C8956C",
-                  background: "#1A1A1A",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "flex-end",
+                  paddingTop: "0.35rem",
                 }}
-              />
-            ))}
-          </div>
-
-          {/* Right: step content */}
-          <div>
-            {steps.map((step, i) => (
-              <div
-                key={step.num}
-                className="step-item flex gap-6 md:pl-8"
-                style={{ marginBottom: i < steps.length - 1 ? "3rem" : "0" }}
               >
-                {/* Mobile: dot + duration */}
-                <div className="md:hidden flex flex-col items-center gap-2 flex-shrink-0">
-                  <div className="w-3 h-3 rounded-full border-2" style={{ borderColor: "#C8956C", background: "#1A1A1A" }} />
-                  <div className="w-[1px] flex-1" style={{ background: "#2D2820" }} />
-                </div>
-
-                <div className="flex-1 pb-2">
-                  {/* Mobile duration */}
-                  <span
-                    className="md:hidden text-xs tracking-[0.2em] uppercase mb-2 block"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#C8956C" }}
-                  >
-                    {step.duration}
-                  </span>
-
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span
-                      className="text-2xl md:text-3xl"
-                      style={{ fontFamily: "'DM Serif Display', serif", color: "#C8956C" }}
-                    >
-                      {step.num}
-                    </span>
-                    <h3 className="text-xl md:text-2xl" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                      {step.title}
-                    </h3>
-                  </div>
-
-                  <p
-                    className="text-sm leading-relaxed max-w-md"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#8F8776" }}
-                  >
-                    {step.description}
-                  </p>
-                </div>
+                <span
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "#C8956C",
+                    textAlign: "right",
+                  }}
+                >
+                  {step.duration}
+                </span>
               </div>
-            ))}
-          </div>
+
+              {/* Center: dot + vertical line */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "50%",
+                    border: "2px solid #C8956C",
+                    background: "#1A1A1A",
+                    flexShrink: 0,
+                    marginTop: "0.35rem",
+                    zIndex: 1,
+                  }}
+                />
+                {i < steps.length - 1 && (
+                  <div style={{ width: "1px", flex: 1, background: "#2D2820", marginTop: "-1px" }} />
+                )}
+              </div>
+
+              {/* Right: step content */}
+              <div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.75rem", marginBottom: "0.5rem" }}>
+                  <span
+                    style={{
+                      fontFamily: "'DM Serif Display', serif",
+                      fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)",
+                      color: "#C8956C",
+                    }}
+                  >
+                    {step.num}
+                  </span>
+                  <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(1.25rem, 2vw, 1.5rem)" }}>
+                    {step.title}
+                  </h3>
+                </div>
+                <p
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.7",
+                    color: "#8F8776",
+                    maxWidth: "32rem",
+                  }}
+                >
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
