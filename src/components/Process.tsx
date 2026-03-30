@@ -154,11 +154,9 @@ export default function Process() {
                 key={i}
                 className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10"
                 style={{
-                  top: i === 0 ? "4px" : `calc(${i} * (100% / ${steps.length - 1}) - 6px)`,
+                  top: i === 0 ? "4px" : `calc(${i} / ${steps.length - 1} * 100%)`,
                   borderColor: "#C8956C",
                   background: "#1A1A1A",
-                  top: i === 0 ? "4px" : undefined,
-                  ...(i > 0 ? { top: `calc(${i} / ${steps.length - 1} * 100%)` } : {}),
                 }}
               />
             ))}
