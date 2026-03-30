@@ -506,7 +506,7 @@ export default function About() {
             <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "#1A1A1A" }}>
               <Image
                 src="/yaseen.jpg"
-                alt="Mohammed Yaseen — Director, Projects"
+                alt="Mohammed Yaseen — Managing Director"
                 fill
                 style={{ objectFit: "cover", objectPosition: "top center" }}
               />
@@ -523,7 +523,7 @@ export default function About() {
                 }}
               >
                 <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "white" }}>
-                  Director &mdash; Projects
+                  Managing Director
                 </span>
               </div>
             </div>
