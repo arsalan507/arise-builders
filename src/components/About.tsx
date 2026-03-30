@@ -326,6 +326,265 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* ── Team Section ── */}
+      <div
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          paddingLeft: "clamp(2.5rem, 5vw, 7rem)",
+          paddingRight: "clamp(2.5rem, 5vw, 7rem)",
+          paddingTop: "clamp(4rem, 6vw, 7rem)",
+          paddingBottom: "clamp(4rem, 6vw, 7rem)",
+          borderTop: "1px solid #EDE9E0",
+          marginTop: "clamp(4rem, 6vw, 7rem)",
+        }}
+      >
+        {/* Team header */}
+        <div style={{ marginBottom: "3.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+            <div style={{ width: "3rem", height: "1px", background: "#C8956C" }} />
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "0.75rem",
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                color: "#C8956C",
+              }}
+            >
+              The People Behind Arise
+            </span>
+          </div>
+          <h3
+            style={{
+              fontFamily: "'DM Serif Display', serif",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+              color: "#1A1A1A",
+            }}
+          >
+            Meet Our <span style={{ color: "#C8956C" }}>Leadership</span>
+          </h3>
+        </div>
+
+        {/* Team grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+            gap: "2rem",
+          }}
+        >
+          {/* Card 1 — Founder & CEO (brother, with photo) */}
+          <div
+            style={{
+              background: "white",
+              borderRadius: "1rem",
+              overflow: "hidden",
+              border: "1px solid #EDE9E0",
+              transition: "box-shadow 0.3s, transform 0.3s",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(200,149,108,0.12)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            {/* Photo */}
+            <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "#1A1A1A" }}>
+              <Image
+                src="/founder.jpg"
+                alt="Founder & CEO"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top center" }}
+              />
+              {/* Gradient overlay at bottom */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, rgba(26,26,26,0.6), transparent)" }} />
+              {/* Designation badge */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "1.25rem",
+                  left: "1.25rem",
+                  padding: "0.35rem 0.85rem",
+                  background: "#C8956C",
+                  borderRadius: "9999px",
+                }}
+              >
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "white" }}>
+                  Founder &amp; CEO
+                </span>
+              </div>
+            </div>
+            {/* Text */}
+            <div style={{ padding: "1.5rem" }}>
+              <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
+                [Founder Name]
+              </h4>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
+                With an unwavering belief that every family deserves a home built with purpose, he founded Arise Builders to bring precision engineering and genuine care together under one roof. His vision is simple — build fewer homes, but build them right.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 — Co-Founder & Chairman (father, placeholder) */}
+          <div
+            style={{
+              background: "white",
+              borderRadius: "1rem",
+              overflow: "hidden",
+              border: "1px solid #EDE9E0",
+              transition: "box-shadow 0.3s, transform 0.3s",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(200,149,108,0.12)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            {/* Photo placeholder */}
+            <div
+              style={{
+                aspectRatio: "3/4",
+                background: "linear-gradient(135deg, #2D2820 0%, #1A1A1A 100%)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  width: "6rem",
+                  height: "6rem",
+                  borderRadius: "50%",
+                  border: "2px solid rgba(200,149,108,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.5rem", color: "#C8956C" }}>
+                  A
+                </span>
+              </div>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: "#6B6355", textTransform: "uppercase" }}>
+                Photo Coming Soon
+              </span>
+              {/* Designation badge */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "1.25rem",
+                  left: "1.25rem",
+                  padding: "0.35rem 0.85rem",
+                  background: "rgba(200,149,108,0.15)",
+                  border: "1px solid rgba(200,149,108,0.3)",
+                  borderRadius: "9999px",
+                }}
+              >
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8956C" }}>
+                  Co-Founder &amp; Chairman
+                </span>
+              </div>
+            </div>
+            {/* Text */}
+            <div style={{ padding: "1.5rem" }}>
+              <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
+                [Father's Name]
+              </h4>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
+                The bedrock of Arise Builders. Decades of experience in construction and deep roots in Bengaluru's real estate landscape make him the guiding force behind every major decision the company takes.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 — Director, Projects (friend, placeholder) */}
+          <div
+            style={{
+              background: "white",
+              borderRadius: "1rem",
+              overflow: "hidden",
+              border: "1px solid #EDE9E0",
+              transition: "box-shadow 0.3s, transform 0.3s",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(200,149,108,0.12)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            {/* Photo placeholder */}
+            <div
+              style={{
+                aspectRatio: "3/4",
+                background: "linear-gradient(135deg, #2D2820 0%, #1A1A1A 100%)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  width: "6rem",
+                  height: "6rem",
+                  borderRadius: "50%",
+                  border: "2px solid rgba(200,149,108,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.5rem", color: "#C8956C" }}>
+                  A
+                </span>
+              </div>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: "#6B6355", textTransform: "uppercase" }}>
+                Photo Coming Soon
+              </span>
+              {/* Designation badge */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "1.25rem",
+                  left: "1.25rem",
+                  padding: "0.35rem 0.85rem",
+                  background: "rgba(200,149,108,0.15)",
+                  border: "1px solid rgba(200,149,108,0.3)",
+                  borderRadius: "9999px",
+                }}
+              >
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8956C" }}>
+                  Director &mdash; Projects
+                </span>
+              </div>
+            </div>
+            {/* Text */}
+            <div style={{ padding: "1.5rem" }}>
+              <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.375rem", color: "#1A1A1A", marginBottom: "0.5rem" }}>
+                [Director's Name]
+              </h4>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.8125rem", color: "#8F8776", lineHeight: "1.75" }}>
+                The man who turns blueprints into reality. With sharp attention to site execution, material quality, and on-ground timelines, he ensures every project at Arise is delivered exactly as promised — no compromises.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
