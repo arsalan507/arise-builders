@@ -430,7 +430,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Card 2 — Co-Founder & Chairman (father, placeholder) */}
+          {/* Card 2 — Chairman (father, placeholder) */}
           <div
             style={{
               background: "white",
@@ -452,7 +452,7 @@ export default function About() {
             <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "#1A1A1A" }}>
               <Image
                 src="/chairman.jpg"
-                alt="Amjad Ahmed — Co-Founder & Chairman"
+                alt="Amjad Ahmed — Chairman"
                 fill
                 style={{ objectFit: "cover", objectPosition: "top center" }}
               />
@@ -469,7 +469,7 @@ export default function About() {
                 }}
               >
                 <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "white" }}>
-                  Co-Founder &amp; Chairman
+                  Chairman
                 </span>
               </div>
             </div>

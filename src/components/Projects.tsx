@@ -10,15 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
-    title: "Aria Residences",
-    subtitle: "Premium Villa Community",
-    location: "Whitefield, Bengaluru",
-    area: "2,400 - 3,800 sq.ft",
-    type: "Villas",
+    title: "Arise Residence",
+    subtitle: "Independent 2BHK Flats",
+    location: "Hegdenagar, Bengaluru",
+    area: "800 sq.ft",
+    type: "G+3 Independent Flats",
     status: "Under Construction",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
+    image: "/arise-residence.jpg",
     description:
-      "A gated community of luxury villas featuring contemporary design, landscaped gardens, and smart home integration. Each villa is crafted to maximize natural light and ventilation.",
+      "A modern G+3 independent flat complex with optimized 2BHK layouts on each floor — featuring open-plan living, dedicated parking, balconies, and a rooftop deck. Designed for maximum comfort and natural ventilation on a compact 800 sq.ft footprint.",
   },
   {
     id: 2,
