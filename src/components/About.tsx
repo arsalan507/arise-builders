@@ -525,37 +525,15 @@ export default function About() {
               (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
             }}
           >
-            {/* Photo placeholder */}
-            <div
-              style={{
-                aspectRatio: "3/4",
-                background: "linear-gradient(135deg, #2D2820 0%, #1A1A1A 100%)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  width: "6rem",
-                  height: "6rem",
-                  borderRadius: "50%",
-                  border: "2px solid rgba(200,149,108,0.4)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "1rem",
-                }}
-              >
-                <span style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.5rem", color: "#C8956C" }}>
-                  M
-                </span>
-              </div>
-              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: "#6B6355", textTransform: "uppercase" }}>
-                Photo Coming Soon
-              </span>
+            {/* Photo */}
+            <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "#1A1A1A" }}>
+              <Image
+                src="/yaseen.jpg"
+                alt="Mohammed Yaseen — Director, Projects"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top center" }}
+              />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "40%", background: "linear-gradient(to top, rgba(26,26,26,0.6), transparent)" }} />
               {/* Designation badge */}
               <div
                 style={{
@@ -563,12 +541,11 @@ export default function About() {
                   bottom: "1.25rem",
                   left: "1.25rem",
                   padding: "0.35rem 0.85rem",
-                  background: "rgba(200,149,108,0.15)",
-                  border: "1px solid rgba(200,149,108,0.3)",
+                  background: "#C8956C",
                   borderRadius: "9999px",
                 }}
               >
-                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8956C" }}>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "white" }}>
                   Director &mdash; Projects
                 </span>
               </div>
