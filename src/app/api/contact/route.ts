@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       from: "Arise Builders <onboarding@resend.dev>",
-      to: "arisebuilders.blr@gmail.com",
+      to: "buildersarise@gmail.com",
       replyTo: email || undefined,
       subject: `New Inquiry from ${name} — ${projectType || "General"}`,
       html: `
