@@ -22,15 +22,15 @@ const projects = [
   },
   {
     id: 2,
-    title: "Skyline Heights",
-    subtitle: "Modern Apartment Living",
-    location: "Sarjapur Road, Bengaluru",
-    area: "1,200 - 2,100 sq.ft",
-    type: "Apartments",
-    status: "Pre-Launch",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+    title: "Arise Heights",
+    subtitle: "Independent 2BHK Flats",
+    location: "Hegdenagar, Bengaluru",
+    area: "800 sq.ft",
+    type: "G+3 Independent Flats",
+    status: "Upcoming",
+    image: "/arise-heights.jpg",
     description:
-      "Elevated urban living with panoramic city views. Premium apartments with rooftop amenities, co-working spaces, and a dedicated wellness zone designed for the modern Bengaluru professional.",
+      "A premium G+3 independent flat offering classic and contemporary elevation options — each 2BHK unit features spacious balconies, elegant interiors, and thoughtful layouts built for modern family living in one of Bengaluru\u2019s most connected neighborhoods.",
   },
 ];
 
